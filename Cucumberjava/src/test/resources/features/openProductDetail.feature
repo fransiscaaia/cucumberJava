@@ -16,3 +16,4 @@ Feature: Open Product Detail
     And I should see related product section
     When I click on product image
     Then I should see product image becomes full screen
+    And I am zoom in zoom out the image

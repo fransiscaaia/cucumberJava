@@ -3,6 +3,7 @@ package steps;
 import static org.junit.Assert.assertTrue;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -58,16 +59,25 @@ public class productDetailSteps {
 	@When("I click on product image")
 	public void i_click_on_product_image() {
 		productPage.image().click();
-		
-		Actions actions = new Actions(driver);
-		actions.clickAndHold(productPage.image());
 	}
 
 	@Then("I should see product image becomes full screen")
 	public void i_should_see_product_image_becomes_full_screen() {
 	    productPage.fullImage().isDisplayed();
 	    WebElement image = driver.findElement(By.className("fotorama__grab"));
+	    Actions actions = new Actions(driver);
+	    actions.clickAndHold(productPage.image());
 	    image.sendKeys(Keys.chord(Keys.COMMAND, Keys.ADD));
+	    
+	}
+	
+	@And("I am zoom in zoom out the image")
+	public void i_am_zoom_in_zoom_out_the_image() {
+	    JavascriptExecutor executor = (JavascriptExecutor)driver;
+	    //zoom in
+	    executor.executeScript("document.body.style.zoom = '100%'");
+	    //zoom put
+	    executor.executeScript("document.body.style.zoom = '75%'");
 	}
 	
 }
