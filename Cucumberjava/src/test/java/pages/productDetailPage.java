@@ -37,6 +37,10 @@ public class productDetailPage {
 		return driver.findElement(image_full);
 	}
 	
+	public WebElement productRelated() {
+		return driver.findElement(product_related);
+	}
+	
 	public void checkProductPrice() {
 		driver.findElement(product_price).isDisplayed();
 	}

@@ -17,7 +17,7 @@ public class productDetailSteps {
 	
 	WebDriver driver = driverManager.getDriver();
 	productDetailPage productPage;
-	
+	JavascriptExecutor executor = (JavascriptExecutor)driver;
 	
 	@Then("I should direct to product detail")
 	public void i_should_direct_to_product_detail() {
@@ -53,11 +53,17 @@ public class productDetailSteps {
 
 	@Then("I should see related product section")
 	public void i_should_see_related_product_section() {
+		//swipe to element
+		executor.executeScript("arguments[0].scrollIntoView();", productPage.productRelated());
 		productPage.checkProductRelated();
+		//scroll down
+		executor.executeScript("window.scrollBy(0,document.body.scrollHeight)");
 	}
 
 	@When("I click on product image")
 	public void i_click_on_product_image() {
+		//scroll up
+		executor.executeScript("window.scrollBy(0,-document.body.scrollHeight)");
 		productPage.image().click();
 	}
 
@@ -73,7 +79,6 @@ public class productDetailSteps {
 	
 	@And("I am zoom in zoom out the image")
 	public void i_am_zoom_in_zoom_out_the_image() {
-	    JavascriptExecutor executor = (JavascriptExecutor)driver;
 	    //zoom in
 	    executor.executeScript("document.body.style.zoom = '100%'");
 	    //zoom put

@@ -5,6 +5,8 @@ import utils.driverManager;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -32,8 +34,9 @@ public class searchResultSteps {
 	}
 
 	@When("I should see product list")
-	public void i_should_see_product_list() {
+	public void i_should_see_product_list() throws IOException {
 	    searchPage.checkProductList();
+	    searchPage.imageValidation();
 	}
 
 	@When("I should see product items")
