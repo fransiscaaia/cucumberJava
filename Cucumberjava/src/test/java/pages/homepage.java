@@ -45,4 +45,8 @@ public class homepage {
 	public WebElement search_input() {
 		return driver.findElement(txt_search_input);
 	}
+	
+	public void openTab(String menu) {
+		driver.findElement(By.xpath("//*[contains(text(), '" + menu + "')]")).click();
+	}
 }

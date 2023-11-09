@@ -80,9 +80,9 @@ public class searchResultPage {
 		ImageDiffer imgDiff = new ImageDiffer();
 		ImageDiff diff = imgDiff.makeDiff(actualImage, expectedImage);
 		if (diff.hasDiff()) {
-			System.out.println("Image is different by method 2.");
+			System.out.println("Image is different. invalid!");
 		} else {
-			System.out.println("Image is same by method 2.");
+			System.out.println("Image is same.");
 		}
 	}
 }

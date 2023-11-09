@@ -17,12 +17,13 @@ import pages.searchResultPage;
 public class searchResultSteps {
 	
 	WebDriver driver = driverManager.getDriver();
-	searchResultPage searchPage;
+	searchResultPage searchPage = new searchResultPage(driver);
 	String search;
+	
+	Actions actions = new Actions(driver);
 
 	@When("I should see search result for {string}")
 	public void i_should_see_search_result_for(String string) {
-	    searchPage = new searchResultPage(driver);
 	    searchPage.checkTitle(string);
 	    
 	    search = string;
@@ -46,7 +47,6 @@ public class searchResultSteps {
 
 	@When("I should see add to cart button on product items")
 	public void i_should_see_add_to_cart_button_on_product_items() {
-		Actions actions = new Actions(driver);
 		actions.moveToElement(searchPage.productItemInfo()).build().perform();
 		searchPage.atcButton().isDisplayed();
 	}

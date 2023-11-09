@@ -63,4 +63,9 @@ public class homepageSteps {
 	    home.search_input().sendKeys(string);
 	    home.search_input().sendKeys(Keys.ENTER);
 	}
+	
+	@When("I click on {string} Tab")
+	public void i_click_on_woman_tab(String string) {
+	    home.openTab(string);
+	}
 }
